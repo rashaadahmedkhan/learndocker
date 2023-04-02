@@ -1,0 +1,45 @@
+# Docker
+
+- Runtime
+    - runc
+    - containerd
+    - lxc
+    - cri-o
+    - rkt
+- Docker engine: to interact with docker.
+- Daemon: controls docker using the cli.
+- Client:
+- Orchestration: helps to manage containers.
+- Dockerfile → Image → Container
+- instruction → class → object
+- $ docker run alpine ping www.google.com
+- $ docker ps
+- To run in background: $ docker run -d alpine ping www.google.com
+- Running nginx:
+    - $ docker run -d -p 8080:80 nginx
+    - $ docker logs e57d
+    - docker stop e57d3dbe430c
+    - docker image rm nginx
+    - docker ps
+    - docker images
+- Ubuntu image to share
+    - docker run -it ubuntu
+    - touch names.txt
+    - echo “hello” >> names.txt
+    - ls
+    - cat names.txt
+    - exit
+    - docker start [container id]
+    - docker exec -it [container id] bash
+    - ls ; names.txt should be visible.
+    - exit
+    - docker commit -m “added names.txt” [container id] names_ubuntu:1.01
+    - names_ubuntu is the name of the image being created.
+    - docker images
+    - docker ps
+    - docker stop [container id]
+    - docker images
+    - docker run -it names_ubuntu:1.01
+    - docker images -q to get id’s of the images.
+    - docker rmi $(docker images -q) to remove all images.
+-Dockefile to create own docker image.
